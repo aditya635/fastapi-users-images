@@ -27,3 +27,12 @@ class Token(BaseModel):
 
 class TokenData(BaseModel):
     id: Optional[str] = None
+
+class File(BaseModel):
+    url: str
+    caption :str
+    class Config():
+        orm_mode = True
+
+class Caption(BaseModel):
+    caption:str
