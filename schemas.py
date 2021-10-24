@@ -1,10 +1,17 @@
 from pydantic import BaseModel
 from typing import Optional,List
 
+class File(BaseModel):
+    url: str
+    caption :str
+    user_id : int
+    class Config():
+        orm_mode = True
 
 class ShowUser(BaseModel):
     name:str
     email:str
+    images : Optional[List[File]] = []
     class Config():
         orm_mode=True
 
@@ -28,11 +35,6 @@ class Token(BaseModel):
 class TokenData(BaseModel):
     id: Optional[str] = None
 
-class File(BaseModel):
-    url: str
-    caption :str
-    class Config():
-        orm_mode = True
 
 class Caption(BaseModel):
     caption:str
