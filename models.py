@@ -11,7 +11,7 @@ class User(Base):
     name = Column(String)
     email = Column(String, unique= True)
     password = Column(String)
-
+    images = relationship("Images",  back_populates="creator")
 
 class Images(Base):
     __tablename__ = "images"
@@ -19,5 +19,6 @@ class Images(Base):
     id = Column(Integer, primary_key=True, index=True)
     caption = Column(String)
     url = Column(URLType)
-
+    user_id = Column(Integer, ForeignKey('users.id'))
+    creator = relationship("User", back_populates="images")
     
